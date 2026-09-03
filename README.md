@@ -48,7 +48,7 @@ The leader key is Space.
 | `<leader>/` | Fuzzy-find text in the current buffer |
 | `<leader>fb` | List open buffers |
 | `<leader>fh` | Search help tags |
-| `gg` | Open lazygit in a terminal split |
+| `gg` | Open lazygit in a floating modal window |
 | `<leader>w` | Save the current file |
 | `<leader>q` | Quit Neovim |
 | `<leader>h` | Move to the left window |
