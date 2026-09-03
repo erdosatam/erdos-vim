@@ -1,0 +1,2 @@
+# erdos-vim
+NEOVIM coinfig
