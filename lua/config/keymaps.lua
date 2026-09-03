@@ -1,0 +1,31 @@
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
+vim.keymap.set("n", "ff", ":Telescope find_files<CR>", { desc = "Find files" })
+vim.keymap.set("n", "fg", ":Telescope live_grep<CR>", { desc = "Live grep" })
+vim.keymap.set("n", "gg", function()
+  vim.cmd("botright new")
+  vim.fn.termopen({ "lazygit" }, {
+    on_exit = function()
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(0) and vim.bo.buftype == "terminal" then
+          vim.cmd("bd!")
+        end
+      end)
+    end,
+  })
+  vim.cmd("startinsert")
+end, { desc = "Open LazyGit" })
+vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Buffers" })
+vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Help tags" })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Move left" })
+vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Move down" })
+vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "Move up" })
+vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Move right" })
+vim.cmd([[cnoreabbrev <expr> ca getcmdtype() ==# ':' && getcmdline() ==# 'ca' ? 'lua vim.lsp.buf.code_action()' : 'ca']])
+vim.cmd([[cnoreabbrev <expr> gi getcmdtype() ==# ':' && getcmdline() ==# 'gi' ? 'lua vim.lsp.buf.implementation()' : 'gi']])
+vim.cmd([[cnoreabbrev <expr> gr getcmdtype() ==# ':' && getcmdline() ==# 'gr' ? 'lua vim.lsp.buf.references()' : 'gr']])
+vim.cmd([[cnoreabbrev <expr> gco getcmdtype() ==# ':' && getcmdline() ==# 'gco' ? 'CopilotChatOpen' : 'gco']])
+
+vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Search in buffer" })
+vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Close buffer" })

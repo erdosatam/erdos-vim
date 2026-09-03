@@ -1,0 +1,7 @@
+require("config.options")
+require("config.ui")
+require("config.autocmds")
+require("config.project")
+require("config.keymaps")
+require("config.session")
+require("plugins")
